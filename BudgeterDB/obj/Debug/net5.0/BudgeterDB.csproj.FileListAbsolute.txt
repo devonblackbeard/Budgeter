@@ -1,0 +1,14 @@
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\bin\Debug\net5.0\BudgeterDB.deps.json
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\bin\Debug\net5.0\BudgeterDB.runtimeconfig.json
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\bin\Debug\net5.0\BudgeterDB.runtimeconfig.dev.json
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\bin\Debug\net5.0\BudgeterDB.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\bin\Debug\net5.0\ref\BudgeterDB.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\bin\Debug\net5.0\BudgeterDB.pdb
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.AssemblyInfoInputs.cache
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.AssemblyInfo.cs
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.csproj.CoreCompileInputs.cache
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\ref\BudgeterDB.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.pdb
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.genruntimeconfig.cache
