@@ -14,7 +14,7 @@ namespace CoreServices
 
         public List<Budget> GetExpenses()
         {
-            return _context.Expenses.ToList();
+            return _context.Expenses.OrderByDescending(a=>a.Description).Reverse().ToList();
         }
 
         public Budget GetExpenseById(int id)

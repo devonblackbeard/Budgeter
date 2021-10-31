@@ -16,7 +16,7 @@ export default ({expense, setIsEditing}) => {
       setIsNewExpense(false);
       setAmount(expense.amount);
       setDescription(expense.description);
-      
+
     }
     else{
       setIsNewExpense(true);
@@ -39,14 +39,14 @@ export default ({expense, setIsEditing}) => {
     <Row>
       <Col>
         <Form.Label>Description</Form.Label>
-        <Form.Control as='select' onChange={event => { console.log(event.target.value); setDescription(event.target.value)}}>
+        <Form.Control as='select' value={description}  onChange={event => { setDescription(event.target.value)}}>
           {descriptions.map(d=> <option key={d}>{d}</option>)}
         </Form.Control>
       </Col>
 
       <Col>
       <Form.Label>Amount</Form.Label>
-        <Form.Control type='number' step='0.01' placeholder={amount} onChange= {event => setAmount(event.target.value)} ></Form.Control>
+        <Form.Control type='number' step='0.01' value={amount} onChange= {event => setAmount(event.target.value)} ></Form.Control>
       </Col>
       <Col>
       <div style={{ marginTop: '2rem'}}>
