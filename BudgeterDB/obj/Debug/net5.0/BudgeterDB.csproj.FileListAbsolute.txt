@@ -12,3 +12,4 @@ C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\Bu
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\ref\BudgeterDB.dll
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.pdb
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.genruntimeconfig.cache
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterDB\obj\Debug\net5.0\BudgeterDB.csproj.AssemblyReference.cache

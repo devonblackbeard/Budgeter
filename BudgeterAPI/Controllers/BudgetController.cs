@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BudgeterAPI.Controllers
 {
     [ApiController]
-    [Route("controller")]
+    [Route("[controller]")]
     public class BudgetController : ControllerBase
     {
         private readonly IBudgeterServices _budgetService;

@@ -68,3 +68,4 @@ C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\N
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\NSwag.Generation.AspNetCore.dll
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\YamlDotNet.dll
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\obj\Debug\net5.0\BudgeterAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\obj\Debug\net5.0\BudgeterAPI.csproj.CopyComplete

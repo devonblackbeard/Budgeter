@@ -33,6 +33,19 @@ namespace BudgeterAPI
             {
                 settings.Title = "Budget App";
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder =>
+                        {
+                            builder.WithOrigins("*")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+
+                        }
+                        );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,18 +56,13 @@ namespace BudgeterAPI
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerUi3();
                 app.UseOpenApi();
-
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BudgeterAPI v1"));
-
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
-            
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
