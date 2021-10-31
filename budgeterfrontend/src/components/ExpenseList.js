@@ -9,6 +9,7 @@ export default () => {
   const dispatch = useDispatch();
   const expenses = useSelector(state => state.expensesReducer.expenses)
 
+  // this is a comment
   useEffect(() => {
     GetExpenses(dispatch);
   }, []);
