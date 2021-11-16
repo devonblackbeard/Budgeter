@@ -1,4 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction } from '@reduxjs/toolkit';
+
+export const setExpensesError = createAction('setExpensesError');
+export const createExpenseError = createAction('createExpenseError');
+export const deleteExpenseError = createAction('deleteExpenseError');
+export const editExpenseError = createAction('editExpenseError');
+
 
 export const expensesSlice = createSlice({
   name: 'expenses',
@@ -25,7 +31,6 @@ export const expensesSlice = createSlice({
       const expenses = state.expenses.filter(expense => expense.id !== action.payload.id)
       return { ...state, expenses: [...expenses]};
     }
-
   }
 });
 

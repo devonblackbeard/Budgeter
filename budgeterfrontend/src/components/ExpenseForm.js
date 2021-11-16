@@ -12,6 +12,7 @@ export default ({expense, setIsEditing}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('in use effect')
     if(expense !== undefined){
       setIsNewExpense(false);
       setAmount(expense.amount);
@@ -39,7 +40,7 @@ export default ({expense, setIsEditing}) => {
     <Row>
       <Col>
         <Form.Label>Description</Form.Label>
-        <Form.Control as='select' value={description}  onChange={event => { setDescription(event.target.value)}}>
+        <Form.Control as='select' value={description} onChange={event => { setDescription(event.target.value)}}>
           {descriptions.map(d=> <option key={d}>{d}</option>)}
         </Form.Control>
       </Col>
@@ -50,7 +51,7 @@ export default ({expense, setIsEditing}) => {
       </Col>
       <Col>
       <div style={{ marginTop: '2rem'}}>
-        {isNewExpense ? <Button variant='primary' type='submit'> Add </Button> :
+        {isNewExpense ? <Button variant='primary' type='submit'>Add</Button> :
         <div>
           <Button style={{marginRight: '2px'}} variant='danger' onClick={()=> DeleteExpense(dispatch, expense)}>Delete</Button>
           <Button variant='success' type='submit'>Save</Button>

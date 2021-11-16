@@ -69,3 +69,7 @@ C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\N
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\YamlDotNet.dll
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\obj\Debug\net5.0\BudgeterAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\obj\Debug\net5.0\BudgeterAPI.csproj.CopyComplete
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

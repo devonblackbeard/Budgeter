@@ -1,5 +1,6 @@
 using BudgeterDB;
 using CoreServices;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,13 @@ namespace BudgeterAPI
             //});
             services.AddDbContext<AppDbContext>();
             services.AddTransient<IBudgeterServices, BudgeterServices>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+           );
+
             services.AddSwaggerDocument(settings =>
             {
                 settings.Title = "Budget App";
@@ -56,7 +64,6 @@ namespace BudgeterAPI
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerUi3();
                 app.UseOpenApi();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BudgeterAPI v1"));
             }
 
             app.UseHttpsRedirection();
