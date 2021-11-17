@@ -1,12 +1,16 @@
 using BudgeterDB;
 using CoreServices;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 namespace BudgeterAPI
 {
@@ -50,10 +54,28 @@ namespace BudgeterAPI
                             builder.WithOrigins("*")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
-
                         }
                         );
             });
+
+            //IdentityModelEventSource.ShowPII = true;
+            var secret = Environment.GetEnvironmentVariable("JWT_SECRET");
+            var issuer = Environment.GetEnvironmentVariable("JWT_ISSUER");
+            services.AddAuthentication(opts =>
+            {
+                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(opts =>
+                {
+                    opts.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = issuer,
+                        ValidateAudience = false,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret))
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +90,7 @@ namespace BudgeterAPI
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors("CorsPolicy");
 
@@ -75,6 +98,7 @@ namespace BudgeterAPI
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

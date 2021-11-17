@@ -1,14 +1,13 @@
 ﻿using BudgeterDB;
 using CoreServices;
 using CoreServices.CustomExceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BudgeterAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
@@ -24,16 +23,28 @@ namespace BudgeterAPI.Controllers
         {
             try
             {
-                var result = _userService.Signup(user);
+                var result = await _userService.Signup(user);
                 return Created("", result);
-
             }
-            catch (UsernameAlreadyExists ex)
+            catch (UsernameAlreadyExistsException ex)
             {
                 return StatusCode(409, ex.Message);                
             }
-
         }
 
+        [HttpPost("signin")]
+        public async Task<IActionResult> SignIn(User user)
+        {
+            try
+            {
+                var result = await _userService.SignIn(user);
+                return Ok(result);
+            }
+            catch (InvalidSignInException ex)
+            {
+                return StatusCode(401, ex.Message);
+            }
+
+        }
     }
 }

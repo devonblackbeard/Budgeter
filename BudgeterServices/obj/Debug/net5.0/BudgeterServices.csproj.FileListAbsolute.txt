@@ -9,7 +9,7 @@ C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.AssemblyInfoInputs.cache
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.AssemblyInfo.cs
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.csproj.CoreCompileInputs.cache
+C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.csproj.CopyComplete
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.dll
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\ref\BudgeterServices.dll
 C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.pdb
-C:\Users\devon\OneDrive\Documents\GitHub\Budgeter\BudgeterServices\obj\Debug\net5.0\BudgeterServices.csproj.CopyComplete

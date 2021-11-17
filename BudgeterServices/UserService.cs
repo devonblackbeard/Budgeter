@@ -1,6 +1,7 @@
 ﻿using BudgeterDB;
 using CoreServices.CustomExceptions;
 using CoreServices.DTO;
+using CoreServices.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -18,12 +19,29 @@ namespace CoreServices
             _hasher = hasher;
         }
 
+        public async Task<AuthenticatedUser> SignIn(User user)
+        {
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u=>u.UserName == user.UserName);
+            if (existingUser == null || _hasher.VerifyHashedPassword(existingUser.Password, user.Password) == PasswordVerificationResult.Failed)
+            {
+                throw new InvalidSignInException("Invalid Username or Password");
+            }
+            else
+            {
+                return new AuthenticatedUser
+                {
+                    Username = user.UserName,
+                    Token = JwtGenerator.GenerateUserToken(user.UserName)
+                };
+            }
+        }
+
         public async Task<AuthenticatedUser> Signup(User user)
         {
             var checkUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
             if (checkUser != null)
             {
-                throw new UsernameAlreadyExists("Username already exists");
+                throw new UsernameAlreadyExistsException("Username already exists");
             }
             user.Password = _hasher.HashPassword(user.Password);
             await _context.AddAsync(user);
@@ -33,7 +51,7 @@ namespace CoreServices
             return new AuthenticatedUser
             {
                 Username = user.UserName,
-                Token = "test token"
+                Token = JwtGenerator.GenerateUserToken(user.UserName)
             };
 
         }

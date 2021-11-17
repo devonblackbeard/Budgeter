@@ -7,5 +7,6 @@ namespace CoreServices
     public interface IUserService
     {
         Task<AuthenticatedUser> Signup(User user);
+        Task<AuthenticatedUser> SignIn(User user);
     }
 }
