@@ -1,11 +1,13 @@
-﻿using BudgeterDB;
+﻿using CoreServices.DTO;
 using CoreServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgeterAPI.Controllers
 {
+    [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BudgetController : ControllerBase
     {
         private readonly IBudgeterServices _budgetService;
@@ -29,21 +31,21 @@ namespace BudgeterAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateExpense(Budget expense)
+        public IActionResult CreateExpense(BudgeterDB.Expense expense)
         {
             var newExpense = _budgetService.CreateExpense(expense);
             return CreatedAtRoute("GetExpense", new { newExpense.Id}, newExpense);
         }
 
         [HttpDelete]
-        public IActionResult DeleteExpense(Budget expense)
+        public IActionResult DeleteExpense(ExpenseDTO expense)
         {
             _budgetService.DeleteExpense(expense);
             return Ok();
         }
 
         [HttpPut]
-        public IActionResult EditExpense(Budget expense)
+        public IActionResult EditExpense(ExpenseDTO expense)
         {
             return Ok(_budgetService.EditExpense(expense));
         }       

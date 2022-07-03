@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BudgeterAPI.Controllers
 {
-    [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IUserService _userService;

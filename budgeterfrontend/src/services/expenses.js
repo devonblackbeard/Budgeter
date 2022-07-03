@@ -2,7 +2,12 @@ import { setExpenses, createExpense, editExpense, deleteExpense, setExpensesErro
 import * as axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'https://localhost:5001/budget'
+  baseURL: `${process.env.REACT_APP_BASE_URL}/budget`
+})
+
+axiosInstance.interceptors.request.use(config => {
+  config.headers = { authorization: 'Bearer ' + sessionStorage.getItem('token')}
+  return config;
 })
 
 export const GetExpenses = async (dispatch) => {
@@ -34,12 +39,10 @@ export const CreateExpense = async (dispatch, expense) => {
 export const EditExpense = async (dispatch, expense) => {
   try {
     await axiosInstance.put('', expense);
-
     dispatch(editExpense(expense))
   } catch (error) {
     console.log('error in edit')
     dispatch(editExpenseError());
-
   }
 }
 
@@ -47,11 +50,9 @@ export const DeleteExpense = async (dispatch, expense) => {
   try {
     // api call
     await axiosInstance.delete('', {data: {...expense} });
-
     dispatch(deleteExpense(expense))
   } catch (error) {
     console.log('error in delete')
     dispatch(deleteExpenseError());
-
   }
 }

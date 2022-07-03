@@ -5,7 +5,6 @@ export const createExpenseError = createAction('createExpenseError');
 export const deleteExpenseError = createAction('deleteExpenseError');
 export const editExpenseError = createAction('editExpenseError');
 
-
 export const expensesSlice = createSlice({
   name: 'expenses',
   initialState: {

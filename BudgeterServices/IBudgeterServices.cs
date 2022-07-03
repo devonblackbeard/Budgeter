@@ -1,4 +1,4 @@
-﻿using BudgeterDB;
+﻿using CoreServices.DTO;
 using System.Collections.Generic;
 
 
@@ -6,10 +6,10 @@ namespace CoreServices
 {
     public interface IBudgeterServices
     {
-        List<Budget> GetExpenses();
-        Budget GetExpenseById(int id);
-        Budget CreateExpense(Budget expense);
-        void DeleteExpense(Budget expense);
-        Budget EditExpense(Budget expense);
+        List<ExpenseDTO> GetExpenses();
+        ExpenseDTO GetExpenseById(int id);
+        ExpenseDTO CreateExpense(BudgeterDB.Expense expense);
+        void DeleteExpense(ExpenseDTO expense);
+        ExpenseDTO EditExpense(ExpenseDTO expense);
     }
 }

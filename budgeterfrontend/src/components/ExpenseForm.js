@@ -1,10 +1,10 @@
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect } from 'React'
 import { CreateExpense, DeleteExpense, EditExpense } from '../services/expenses';
 import { useDispatch } from 'react-redux'
 
 
-export default ({expense, setIsEditing}) => {
+const ExpenseForm= ({expense, setIsEditing}) => {
   const descriptions = ['Groceries', 'Credit Card', 'Student Loans', 'Eating out', 'Gas']
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState(descriptions[0]);
@@ -12,12 +12,10 @@ export default ({expense, setIsEditing}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('in use effect')
     if(expense !== undefined){
       setIsNewExpense(false);
       setAmount(expense.amount);
       setDescription(expense.description);
-
     }
     else{
       setIsNewExpense(true);
@@ -28,14 +26,12 @@ export default ({expense, setIsEditing}) => {
     if(isNewExpense){
       // create a new expense
       CreateExpense(dispatch, {description: description, amount: amount});
-
     }
     else{
       // edit expense
       EditExpense(dispatch, {id: expense.id, description: description, amount: amount})
       setIsEditing(false)
     }
-
   }}>
     <Row>
       <Col>
@@ -63,4 +59,5 @@ export default ({expense, setIsEditing}) => {
   </Form>
 }
 
+export default ExpenseForm;
 

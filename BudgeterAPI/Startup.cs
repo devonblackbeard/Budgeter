@@ -4,10 +4,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
@@ -32,10 +32,12 @@ namespace BudgeterAPI
             //{
             //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BudgeterAPI", Version = "v1" });
             //});
+
             services.AddDbContext<AppDbContext>();
             services.AddTransient<IBudgeterServices, BudgeterServices>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IPasswordHasher, PasswordHasher>();
+            services.AddTransient<IPasswordHasher, PasswordHasher>();            
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -54,8 +56,9 @@ namespace BudgeterAPI
                             builder.WithOrigins("*")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
+                         //   .AllowAnyOrigin();
                         }
-                        );
+                    );
             });
 
             //IdentityModelEventSource.ShowPII = true;
@@ -88,11 +91,11 @@ namespace BudgeterAPI
                 app.UseOpenApi();
             }
 
-            app.UseHttpsRedirection();
+          //  app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

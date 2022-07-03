@@ -4,7 +4,7 @@ namespace BudgeterDB
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Budget> Expenses { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
         public DbSet<User> Users { get; set; }
 
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BudgeterDB
 {
-    public class Budget
+    public class Expense
     {
         [Key]
         public int Id { get; set; }
@@ -12,5 +12,6 @@ namespace BudgeterDB
 
         public User User { get; set; }
 
+     
     }
 }

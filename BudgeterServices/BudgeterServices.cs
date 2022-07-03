@@ -1,42 +1,48 @@
-﻿using BudgeterDB;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using CoreServices.DTO;
+
 
 namespace CoreServices
 {
     public class BudgeterServices : IBudgeterServices
     {
-        private AppDbContext _context;
-        public BudgeterServices(AppDbContext context)
+        private BudgeterDB.AppDbContext _context;
+        private readonly BudgeterDB.User _user;
+        public BudgeterServices(BudgeterDB.AppDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _user = _context.Users.First(u => u.UserName == httpContextAccessor.HttpContext.User.Identity.Name);
         }
 
-        public List<Budget> GetExpenses()
+        public List<ExpenseDTO> GetExpenses()
         {
-            return _context.Expenses.OrderByDescending(a=>a.Description).Reverse().ToList();
+            return _context.Expenses.Where(e => e.User.Id == _user.Id).Select(e => (ExpenseDTO)e).ToList();
         }
 
-        public Budget GetExpenseById(int id)
+        public ExpenseDTO GetExpenseById(int id)
         {
-            return _context.Expenses.FirstOrDefault(e=> e.Id == id);
+            return _context.Expenses.Where(e=> e.User.Id == _user.Id && e.Id == id).Select(e => (ExpenseDTO)e).FirstOrDefault();
         }
 
-        public Budget CreateExpense(Budget expense)
+        public ExpenseDTO CreateExpense(BudgeterDB.Expense expense)
         {
+            expense.User = _user;
             _context.Add(expense);
             _context.SaveChanges();
 
-            return expense;
+            return (ExpenseDTO)expense;
         }
 
-        public void DeleteExpense(Budget expense)
+        public void DeleteExpense(ExpenseDTO expense)
         {
-            _context.Expenses.Remove(expense);
+            var dbExpense = _context.Expenses.First(e => e.User.Id == _user.Id && e.Id == expense.Id);
+            _context.Expenses.Remove(dbExpense);
             _context.SaveChanges();           
         }
 
-        public Budget EditExpense(Budget expense)
+        public ExpenseDTO EditExpense(ExpenseDTO expense)
         {
             var dbExpense = _context.Expenses.First(e => e.Id == expense.Id);
             dbExpense.Description = expense.Description;
